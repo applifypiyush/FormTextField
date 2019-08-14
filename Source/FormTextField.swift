@@ -254,13 +254,17 @@ extension FormTextField {
     @objc(textField:shouldChangeCharactersInRange:replacementString:) public func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string == "\n" {
             return true
+        } else if string == "" {
+            var updatedText = ((self.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            self.text = updatedText
+            return false
         }
-
+        
         var valid = true
         if let inputValidator = self.inputValidator {
             valid = inputValidator.validateReplacementString(string, fullString: text, inRange: range)
         }
-
+        
         return valid
     }
 }
