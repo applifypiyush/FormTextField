@@ -255,7 +255,7 @@ extension FormTextField {
         if string == "\n" {
             return true
         } else if string == "" {
-            var updatedText = ((self.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            let updatedText = ((self.text ?? "") as NSString).replacingCharacters(in: range, with: string)
             self.text = updatedText
             return false
         }
