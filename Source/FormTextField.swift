@@ -241,7 +241,7 @@ extension FormTextField {
         } else if accessoryViewMode != .never {
             rightView = clearButton
         }
-
+        textFieldDelegate?.formTextFieldDidBeginEditing?(self)
         updateActive(true)
     }
 
